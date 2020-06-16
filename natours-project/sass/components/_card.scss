@@ -131,7 +131,9 @@
     font-weight: 100;
   }
 
-  @include respond(tab-port) {
+  //@include respond(tab-port) {
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
+    // hover: none SETS THE MEDIA QUERY TO GO INTO EFFECT IF THE DEVICE BEING USED IS A TOUCH DEVICE (CANT HOVER)
     height: auto;
     border-radius: 3px;
     background-color: $color-white;
