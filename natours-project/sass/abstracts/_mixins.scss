@@ -1,7 +1,69 @@
 @mixin clearfix {
-    &::after {
-        content: "";
-        display: table;
-        clear: both;
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// MEDIA QUERY MANAGER
+
+/*
+0 - 600: phone
+600 - 900: tablet portrait
+900 - 1200: tablet landscape
+1200 - 1800: normal styles apply
+1800 + : big desktop
+*/
+
+// @mixin respond-phone {
+//   @media (max-width: 600px) {
+//     @content;
+//   }
+// }
+
+/*
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+*/
+
+/*
+GOOD ORDER TO DO THESE IN:
+
+BASE + TYPOGRAPHY > GENERAL LAYOUT + GRID > PAGE LAYOUT > COMPONENTS
+*/
+
+// em and rem in media queries are not affected by what
+// is changed in the base font size, they are always just
+// what the default font size is for the browser, which is
+// usually just 16px
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: 37.5em) {
+      // 600px
+      @content;
     }
+  }
+  @if $breakpoint == tab-port {
+    @media (max-width: 56.25em) {
+      // 900px
+      @content;
+    }
+  }
+  @if $breakpoint == tab-land {
+    @media (max-width: 75em) {
+      // 1200px
+      @content;
+    }
+  }
+  @if $breakpoint == big-desktop {
+    @media (min-width: 112.5em) {
+      // 1800px
+      @content;
+    }
+  }
 }
