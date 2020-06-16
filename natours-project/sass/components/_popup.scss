@@ -10,6 +10,14 @@
   opacity: 0;
   visibility: hidden;
 
+  // THIS IS AN EXAMPLE OF GRACEFUL DEGRADATION --- IT ONLY APPLIES THESE STYLES IF THESE TWO STYLES ARE SUPPORTED IN THE BROWSER
+  // IF NOT -- THEN IT IS LEFT OUT
+  @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba($color-black, 0.3);
+  }
+
   &__content {
     background-color: $color-white;
     position: absolute;
